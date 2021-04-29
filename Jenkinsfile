@@ -1,0 +1,7 @@
+pipeline {
+
+    stage ('checkout code'){
+
+        
+    }
+}
