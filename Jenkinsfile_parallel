@@ -5,6 +5,7 @@ pipeline {
         maven 'mymaven'
         jdk 'myjava'
     }
+
    stages {
 
        stage('Check out code') {
@@ -12,7 +13,9 @@ pipeline {
              git url: 'https://github.com/PMayukh/Devops.git', branch: 'master'
            }
        }
-      parallel{ 
+
+      parallel('Parallel Block'){ 
+       
        stage('Validate'){
            steps{
                sh """
@@ -27,9 +30,9 @@ pipeline {
                mvn compile
                """
            }
-       }
+    }
 
-       }       
-   } 
+  }       
+ } 
 }
 
