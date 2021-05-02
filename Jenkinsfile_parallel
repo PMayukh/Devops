@@ -1,0 +1,35 @@
+pipeline {
+    agent any 
+
+    tools{
+        maven 'mymaven'
+        jdk 'myjava'
+    }
+   stages {
+
+       stage('Check out code') {
+           steps{
+             git url: 'https://github.com/PMayukh/Devops.git', branch: 'master'
+           }
+       }
+      parallel{ 
+       stage('Validate'){
+           steps{
+               sh """
+               mvn validate
+               """
+           }
+       }
+
+       stage('Compile'){
+           steps{
+               sh """
+               mvn compile
+               """
+           }
+       }
+
+       }       
+   } 
+}
+
