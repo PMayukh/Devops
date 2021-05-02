@@ -14,7 +14,8 @@ pipeline {
            }
        }
 
-      parallel('Parallel Block'){ 
+      stage('Parallel Block'){
+      parallel{ 
        
        stage('Validate'){
            steps{
@@ -35,4 +36,4 @@ pipeline {
   }       
  } 
 }
-
+}
